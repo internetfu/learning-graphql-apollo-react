@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CreateLink from './CreateLink';
 import Header from './Header';
 import LinkList from './LinkList';
+import Login from './Login';
 import { Switch, Route } from 'react-router-dom';
 
 export default class App extends Component {
@@ -18,6 +19,7 @@ export default class App extends Component {
                             path="/create"
                             component={CreateLink}
                         ></Route>
+                        <Route exact path="/login" component={Login}></Route>
                     </Switch>
                 </div>
             </div>
