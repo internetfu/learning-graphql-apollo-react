@@ -19,6 +19,14 @@ class CreateLink extends Component {
         url: ''
     };
 
+    onChangeHandler = event => {
+        event.preventDefault();
+        const currentTarget = event && event.target;
+        currentTarget &&
+            currentTarget.name &&
+            this.setState({ [currentTarget.name]: currentTarget.value });
+    };
+
     render() {
         const { description, url } = this.state;
 
@@ -28,9 +36,8 @@ class CreateLink extends Component {
                     <input
                         className="mb2"
                         value={description}
-                        onChange={e => {
-                            this.setState({ description: e.target.value });
-                        }}
+                        name="description"
+                        onChange={this.onChangeHandler}
                         type="text"
                         placeholder="A description for the link"
                     />
@@ -38,7 +45,8 @@ class CreateLink extends Component {
                         type="text"
                         className="mb2"
                         value={url}
-                        onChange={e => this.setState({ url: e.target.value })}
+                        name="url"
+                        onChange={this.onChangeHandler}
                         placeholder="The URL for the link"
                     />
                 </div>
